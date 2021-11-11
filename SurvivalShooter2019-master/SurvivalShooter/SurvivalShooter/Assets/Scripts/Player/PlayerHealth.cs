@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
+    //added
+    [SerializeField]
+     AudioClip heartBeat;
+
     public int startingHealth = 100;
     public int currentHealth;
     public Slider healthSlider;
@@ -14,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+    //added
+    AudioSource hrtBeat;
 
     Animator anim;
     AudioSource playerAudio;
@@ -26,10 +32,16 @@ public class PlayerHealth : MonoBehaviour
     void Awake ()
     {
         anim = GetComponent <Animator> ();
+
+        //added
+        hrtBeat = GetComponent<AudioSource>();
+
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
         playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
+
+        
     }
 
 
@@ -44,6 +56,8 @@ public class PlayerHealth : MonoBehaviour
             damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
         damaged = false;
+
+       
     }
 
 
@@ -56,13 +70,24 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.value = currentHealth;
 
         playerAudio.Play ();
+        
 
-        if(currentHealth <= 0 && !isDead)
+        if (currentHealth <= 0 && !isDead)
         {
             Death ();
+            
         }
+
+        //added
+        if(currentHealth <= 50)
+        {
+            hrtBeat.Play();
+        }
+        
+        
     }
 
+  
 
     void Death ()
     {

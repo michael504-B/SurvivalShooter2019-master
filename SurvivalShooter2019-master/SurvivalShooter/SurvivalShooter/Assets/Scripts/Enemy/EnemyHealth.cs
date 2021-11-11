@@ -1,7 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    //Added
+    [SerializeField]
+    Image HPBar;
+
+    [SerializeField]
+    Image damageImage;
+
+    [SerializeField]
+    bool damaged;
+
+    [SerializeField]
+    public float flashSpeed = 5f;
+
+    [SerializeField]
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+
+    
     public int startingHealth = 100;
     public int currentHealth;
     public float sinkSpeed = 2.5f;
@@ -34,6 +52,20 @@ public class EnemyHealth : MonoBehaviour
         {
             transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
         }
+        //added
+        if (damaged)
+        {
+            damageImage.color = flashColour;
+        }
+        else
+        {
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        damaged = false;
+
+        //added
+        enemyHPBar();
+        
     }
 
 
@@ -41,18 +73,24 @@ public class EnemyHealth : MonoBehaviour
     {
         if(isDead)
             return;
+        //added
+        damaged = true;
 
         enemyAudio.Play ();
 
         currentHealth -= amount;
-            
+       
+
         hitParticles.transform.position = hitPoint;
         hitParticles.Play();
 
         if(currentHealth <= 0)
         {
+            transform.Translate (Vector3.back * 2);
             Death ();
+            
         }
+
     }
 
 
@@ -77,4 +115,14 @@ public class EnemyHealth : MonoBehaviour
         ScoreManager.score += scoreValue;
         Destroy (gameObject, 2f);
     }
+
+    public void enemyHPBar()
+    {
+       
+        // Added 
+        HPBar.fillAmount = (float)currentHealth / 100;
+
+    }
+   
+   
 }

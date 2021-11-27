@@ -6,7 +6,6 @@ public class PlayerShooting : MonoBehaviour
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
 
-
     float timer;
     Ray shootRay = new Ray();
     RaycastHit shootHit;

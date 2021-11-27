@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
 	public float speed = 6f;
 
@@ -40,7 +40,16 @@ public class PlayerMovement : MonoBehaviour
 
 	void Turning()
 	{
+		if (Input.GetButton("Rotate1"))
+        {
+			transform.Rotate(Vector3.up * 3f);
+        }
+		if (Input.GetButton("Rotate2"))
+        {
+			transform.Rotate(-Vector3.up * 3f);
+        }
 		
+		/*
 		Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit floorHit;
 
@@ -51,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 			Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
 			playerRigidbody.MoveRotation(newRotation);
 		}
-		
+		*/
 	}
 
 	void Animating(float h, float v)

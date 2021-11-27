@@ -5151,6 +5151,7 @@ GameObject:
   - component: {fileID: 114926325598140600}
   - component: {fileID: 114245940197838398}
   - component: {fileID: 114491779595983746}
+  - component: {fileID: 2125715443}
   m_Layer: 9
   m_Name: Zombunny
   m_TagString: Untagged
@@ -5404,6 +5405,20 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
+--- !u!114 &2125715443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719079804300652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8cacd9563320f94db9c14073aba45b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 0.5
+  attackDamage: 10
 --- !u!1 &2278287917068008384
 GameObject:
   m_ObjectHideFlags: 0

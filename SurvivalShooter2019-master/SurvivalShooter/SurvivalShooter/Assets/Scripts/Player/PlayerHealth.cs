@@ -81,7 +81,7 @@ public class PlayerHealth : MonoBehaviour
         //added
         if(currentHealth <= 50)
         {
-            hrtBeat.Play();
+            playerAudio.clip = heartBeat;
         }
         
         

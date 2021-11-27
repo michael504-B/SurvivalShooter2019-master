@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+
     
     public int startingHealth = 100;
     public int currentHealth;
